@@ -6,7 +6,7 @@ import { CheckBox } from "react-native";
 import { Button } from "react-native";
 import { Picker } from "react-native";
 
-const NursePatientFile = ({route}) => {
+const dcPatientFile = ({route}) => {
     const [agree, setAgree] = useState(false);
     const {patient}=route.params;
     let today = new Date();
@@ -129,4 +129,4 @@ const styles = StyleSheet.create({
     }
 })
  
-export default NursePatientFile;
+export default dcPatientFile;

@@ -9,6 +9,7 @@ import RcPatientFile from "./components/receptionist/rcPatientFile";
 import NurseHome from "./components/nurse/nurseHome";
 import RcLogin from "./components/receptionist/rcLogin";
 import NursePatientFile from "./components/nurse/nursePatientFile";
+import dcHome from "./components/doctor/dcHome";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -25,6 +26,7 @@ const App = () => {
         <Stack.Screen name="rcHome" component={RcHome} />
         <Stack.Screen name="rcPatientFile" component={RcPatientFile} />
         <Stack.Screen name="nursePatientFile" component={NursePatientFile} />
+        <Stack.Screen name="dcHome" component={dcHome} />
         <Stack.Screen name="nurseHome" component={NurseHome} />
       </Stack.Navigator>
     </NavigationContainer>

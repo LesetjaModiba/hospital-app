@@ -47,7 +47,9 @@ const LoginAs = ({ navigation }) => {
         </Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.doctor}>
+      <TouchableOpacity style={styles.doctor}  onPress={() => {
+          navigation.navigate("dcHome");
+        }}>
         <Text style={{ color: "#ECECEC", fontSize: 20, fontWeight: 400 }}>
           Doctor
         </Text>

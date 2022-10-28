@@ -1,7 +1,6 @@
 import { SafeAreaView,StyleSheet, View, Text, ScrollView, TextInput, TouchableOpacity } from "react-native";
 
 const NurseHome = ({navigation}) => {
-
     const patientInfo=[
         {
             idno:"982900980219",
@@ -11,8 +10,7 @@ const NurseHome = ({navigation}) => {
              +"0751"
              ,
             Notes:"",
-            condition:"Severe",
-         
+            condition:"Severe"
 
         },
         {
@@ -24,7 +22,6 @@ const NurseHome = ({navigation}) => {
              ,
             Notes:"",
             condition:"Moderate",
-            
 
         },
         {
@@ -35,8 +32,7 @@ const NurseHome = ({navigation}) => {
              +"0751"
              ,
             Notes:"",
-            condition:"Severe",
-          
+            condition:"Severe"
 
         },
         {
@@ -47,8 +43,7 @@ const NurseHome = ({navigation}) => {
              +"0751"
              ,
             Notes:"",
-            condition:"Moderate",
-             
+            condition:"Moderate"
 
         },
         {
@@ -59,8 +54,7 @@ const NurseHome = ({navigation}) => {
              +"0751"
              ,
             Notes:"",
-            condition:"Mild",
-         
+            condition:"Mild"
 
         },
         {
@@ -71,8 +65,7 @@ const NurseHome = ({navigation}) => {
              +"0751"
              ,
             Notes:"",
-            condition:"Mild",
-  
+            condition:"Mild"
 
         },
 
