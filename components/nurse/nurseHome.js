@@ -90,7 +90,7 @@ const NurseHome = ({navigation}) => {
             </View>
         </View>
         <ScrollView style={styles.patientList}>
-            <TextInput style={{width: "95%", height: 32, backgroundColor: "#5060F0",borderRadius: 5,placeholderTextColor:"white",paddingLeft:10,color:"white",marginBottom:20,alignSelf:"center"}}
+            <TextInput style={{width: "95%", height: 32, backgroundColor: "#5060F0",placeholderTextColor:"white",paddingLeft:10,color:"white",marginBottom:20,alignSelf:"center"}}
             placeholder="Search..."
             />
     
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
           marginBottom:40,
           padding:20,
           border: "2px solid #9C9EEB",
-          borderRadius: "15px",
+          borderRadius: 15,
       },
       patient:{
           width: "95%",

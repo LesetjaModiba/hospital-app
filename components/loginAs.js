@@ -20,39 +20,40 @@ const LoginAs = ({ navigation }) => {
       <TouchableOpacity style={styles.circle7}>
         <Text
           style={{
-            color: "#ECECEC",
+            color: "black",
             fontSize: 18,
-            fontWeight: 600,
+            // fontWeight: 600,
             marginTop: 23,
           }}
         >
-          Close
-        </Text>
-      </TouchableOpacity>
+           Close
+         </Text>
+       </TouchableOpacity>
 
-      <TouchableOpacity
+       {/* <TouchableOpacity
         style={styles.recep}
         onPress={() => {
           navigation.navigate("rcLogin");
         }}
       >
-        <Text style={{ color: "#ECECEC", fontSize: 18, fontWeight: 400 }}>
+        <Text style={{ color: "#ECECEC", fontSize: 18 }}>
           Receptionist
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <TouchableOpacity style={styles.nurse}  onPress={() => {navigation.navigate("nurseHome")}}>
-        <Text style={{ color: "#ECECEC", fontSize: 18, fontWeight: 400 }}>
+        <Text style={{ color: "#ECECEC", fontSize: 18 }}>
           Nurse
         </Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.doctor}>
-        <Text style={{ color: "#ECECEC", fontSize: 20, fontWeight: 400 }}>
+        <Text style={{ color: "#ECECEC", fontSize: 20 }}>
           Doctor
         </Text>
       </TouchableOpacity>
     </SafeAreaView>
+  
   );
 };
 const styles = StyleSheet.create({
@@ -68,9 +69,9 @@ const styles = StyleSheet.create({
     height: 408,
     right: -80,
     top: -90,
-    opacity: "25%",
+    opacity: 0.25,
     backgroundColor: "#5060F0",
-    borderRadius: "50%",
+    borderRadius: 300,
   },
   circle2: {
     position: "absolute",
@@ -78,9 +79,9 @@ const styles = StyleSheet.create({
     height: 310,
     right: -30,
     top: -50,
-    opacity: "35%",
+    opacity: 0.35,
     backgroundColor: "#5060F0",
-    borderRadius: "50%",
+    borderRadius: 300,
   },
   circle3: {
     position: "absolute",
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     right: 25,
     top: 4,
     backgroundColor: "#5060F0",
-    borderRadius: "50%",
+    borderRadius: 300,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -99,9 +100,9 @@ const styles = StyleSheet.create({
     height: 308,
     left: -143,
     bottom: 90,
-    opacity: "25%",
+    opacity: 0.25,
     backgroundColor: "#5060F0",
-    borderRadius: "50%",
+    borderRadius: 300,
   },
   circle5: {
     position: "absolute",
@@ -110,8 +111,8 @@ const styles = StyleSheet.create({
     left: -90,
     bottom: 145,
     backgroundColor: "#5060F0",
-    borderRadius: "50%",
-    opacity: "35%",
+    borderRadius: 300,
+    opacity: 0.35,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -122,8 +123,8 @@ const styles = StyleSheet.create({
     left: -53,
     bottom: 188,
     backgroundColor: "#5060F0",
-    borderRadius: "50%",
-    // opacity:"35%",
+    borderRadius: 300,
+    opacity:0.35,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -132,13 +133,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: 200,
     height: 200,
-    left: 103,
+    left: 85,
     bottom: -130,
     backgroundColor: "#5060F0",
-    borderRadius: "50%",
-    // opacity:"35%",
+    borderRadius: 300,
+    opacity:0.35,
     alignItems: "center",
-    // justifyContent: "center",
+    justifyContent: "center",
   },
   recep: {
     marginTop: 380,
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   nurse: {
-    marginTop: 40,
+    marginTop:360,
     borderBottomWidth: 2,
     borderBottomColor: "#ECECEC",
     width: "85%",
