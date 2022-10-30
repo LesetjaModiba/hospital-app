@@ -1,82 +1,26 @@
 import { SafeAreaView,StyleSheet, View, Text, ScrollView, TextInput, TouchableOpacity } from "react-native";
 
+import React, { useEffect} from "react";
+import { addDoc, collection, getDocs,serverTimestamp } from 'firebase/firestore';
+import { db } from '../config/firebase.js';
+
 const NurseHome = ({navigation}) => {
+    const [patientInfo,setPatientInfo]=React.useState([])
+    const patientRef = collection(db, "patients")
 
-    const patientInfo=[
-        {
-            idno:"982900980219",
-            fullName:"Thabo Mphela",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Severe",
-         
+    const getPatientRef = async () => {
+        const data = await getDocs(patientRef)
 
-        },
-        {
-            idno:"002900980219",
-            fullName:"Katlego Moila",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Moderate",
-            
+        console.log(data.docs.map((results) => (results.data())))
+        setPatientInfo(data.docs.map((results) => ({ ...results.data(), id: results.id })));
 
-        },
-        {
-            idno:"832900980219",
-            fullName:"Joseph Laka",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Severe",
-          
 
-        },
-        {
-            idno:"232902340212",
-            fullName:"Thapelo Seimela",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Moderate",
-             
+    }
+    useEffect(() => {
+        getPatientRef()
 
-        },
-        {
-            idno:"686590980233",
-            fullName:"Kagiso Ledwaba",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Mild",
-         
+    }, []);
 
-        },
-        {
-            idno:"012900980344",
-            fullName:"John Malebana",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Mild",
-  
-
-        },
-
-    ]
     return ( 
         <SafeAreaView  style={styles.container}>
         <View style={{width:"100%",flexDirection:"row", paddingLeft:40,marginTop:60}}>
@@ -90,7 +34,7 @@ const NurseHome = ({navigation}) => {
             </View>
         </View>
         <ScrollView style={styles.patientList}>
-            <TextInput style={{width: "95%", height: 32, backgroundColor: "#5060F0",placeholderTextColor:"white",paddingLeft:10,color:"white",marginBottom:20,alignSelf:"center"}}
+            <TextInput style={{width: "95%", height: 32, backgroundColor: "#5060F0",borderRadius: 5,placeholderTextColor:"white",paddingLeft:10,color:"white",marginBottom:20,alignSelf:"center"}}
             placeholder="Search..."
             />
     

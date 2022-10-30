@@ -17,16 +17,6 @@ const NursePatientFile = ({ route }) => {
     const [data, setData] = React.useState([])
     const patientRef = collection(db, "patients")
 
-    const date ={
-        createdAt: serverTimestamp()
-    }
-
-    addDoc(patientRef,date).then(()=>{
-        console.log('date available');
-    }).catch((error)=>{
-        console.log(error);
-    })
-
     const getPatientRef = async () => {
         const data = await getDocs(patientRef)
 
@@ -39,43 +29,43 @@ const NursePatientFile = ({ route }) => {
         getPatientRef()
 
     }, []);
-    const records = [
-        {
-            date: today,
-            patient: patient.fullName,
-            syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
-            condition: patient.condition,
-            date: "Mon Oct 24 2022"
-        },
-        {
-            date: today,
-            patient: patient.fullName,
-            syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
-            condition: patient.condition,
-            date: "Tue Oct 25 2022"
-        },
-        {
-            date: today,
-            patient: patient.fullName,
-            syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
-            condition: patient.condition,
-            date: "Mon Oct 24 2022"
-        },
-        {
-            date: today,
-            patient: patient.fullName,
-            syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
-            condition: patient.condition,
-            date: "Tue Oct 25 2022"
-        },
-        {
-            date: today,
-            patient: patient.fullName,
-            syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
-            condition: patient.condition,
-            date: "Wed Oct 26 2022"
-        }
-    ]
+    // const records = [
+    //     {
+    //         date: today,
+    //         patient: patient.fullName,
+    //         syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
+    //         condition: patient.condition,
+    //         date: "Mon Oct 24 2022"
+    //     },
+    //     {
+    //         date: today,
+    //         patient: patient.fullName,
+    //         syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
+    //         condition: patient.condition,
+    //         date: "Tue Oct 25 2022"
+    //     },
+    //     {
+    //         date: today,
+    //         patient: patient.fullName,
+    //         syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
+    //         condition: patient.condition,
+    //         date: "Mon Oct 24 2022"
+    //     },
+    //     {
+    //         date: today,
+    //         patient: patient.fullName,
+    //         syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
+    //         condition: patient.condition,
+    //         date: "Tue Oct 25 2022"
+    //     },
+    //     {
+    //         date: today,
+    //         patient: patient.fullName,
+    //         syptoms: "fever* or feeling feverish/chills, sore throat, cough, runny or stuffy nose, muscle or body aches, fatigue (tiredness), body aches, chills, cough, fatigue, fever",
+    //         condition: patient.condition,
+    //         date: "Wed Oct 26 2022"
+    //     }
+    // ]
     const [nurseAdd, setNurseAdd] = React.useState(false)
     console.log(agree)
     return (
@@ -107,16 +97,17 @@ const NursePatientFile = ({ route }) => {
 
                                 <View key={i} style={{ width: 300, alignSelf: "center", backgroundColor: "#5060F0", marginTop: 10, padding: 5, borderRadius: 8 }}>
                                     <Text style={{ color: "white" }}>Date: {record.date}</Text>
-                                    <Text style={{ color: "white" }}>Patient: {record.patient}</Text>
-                                    <Text style={{ color: "white" }}>Notes: {record.syptoms}</Text>
+                                    <Text style={{ color: "white" }}>Patient: {record.fullName}</Text>
+                                    <Text style={{ color: "white" }}>Notes: {record.notes}</Text>
                                     {nurseAdd === false ? (
-                                        <TouchableOpacity style={styles.btn} onPress={() => setNurseAdd(true)}>Add notes</TouchableOpacity>
+                                        <TouchableOpacity style={styles.btn} onPress={() => setNurseAdd(true)}>
+                                            <Text>Add notes</Text></TouchableOpacity>
                                     ) : (
                                         <View>
                                             <TextInput placeholder="Notes by nurse" style={{ width: "98%", height: 42, backgroundColor: "#2827D3", borderRadius: 5, placeholderTextColor: "white", paddingLeft: 10, color: "white", margin: 10, alignSelf: "center" }}>
                                             </TextInput>
                                             <TouchableOpacity style={styles.btn}>
-                                                Save
+                                                <Text>Save</Text>
                                             </TouchableOpacity>
                                         </View>
                                     )}
@@ -158,8 +149,8 @@ const NursePatientFile = ({ route }) => {
 
                                 <View key={index} style={{ width: 300, alignSelf: "center", backgroundColor: "#2827D3", marginTop: 10, padding: 5, borderRadius: 8 }}>
                                     <Text style={{ color: "white" }}>Date: {record.date}</Text>
-                                    <Text style={{ color: "white" }}>Patient: {record.fullNames}</Text>
-                                    <Text style={{ color: "white" }}>Notes: {record.syptoms}</Text>
+                                    <Text style={{ color: "white" }}>Patient: {record.fullName}</Text>
+                                    <Text style={{ color: "white" }}>Notes: {record.notes}</Text>
 
                                 </View>
                             )
@@ -184,7 +175,7 @@ const styles = StyleSheet.create({
     },
     record: {
         width: "95%",
-        height: 44,
+        height: 30,
         backgroundColor: "#5060F0",
         borderRadius: 5,
         alignSelf: "center",
