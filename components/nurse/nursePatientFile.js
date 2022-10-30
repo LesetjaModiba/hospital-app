@@ -9,7 +9,7 @@ import Checkbox from "expo-checkbox";
 import { Picker } from "@react-native-picker/picker";
 
 
-const NursePatientFile = ({ route }) => {
+const NursePatientFile = ({ navigation,route }) => {
     const [agree, setAgree] = useState(false);
     const { patient } = route.params;
     let today = new Date();
@@ -92,31 +92,36 @@ const NursePatientFile = ({ route }) => {
                     <View style={{ width: 339, height: 1, backgroundColor: "#FFFFFF" }} ></View>
 
                     <ScrollView>
-                        {data.map((record, i) => (
-                            record.date === today.toString().substring(0, 15) ? (
+                        {data.map((record, i) => {
+                             if(record.fullName==patient.fullName){
+                                return(
+                                    record.date === today.toString().substring(0, 15) ? (
 
-                                <View key={i} style={{ width: 300, alignSelf: "center", backgroundColor: "#5060F0", marginTop: 10, padding: 5, borderRadius: 8 }}>
-                                    <Text style={{ color: "white" }}>Date: {record.date}</Text>
-                                    <Text style={{ color: "white" }}>Patient: {record.fullName}</Text>
-                                    <Text style={{ color: "white" }}>Notes: {record.notes}</Text>
-                                    {nurseAdd === false ? (
-                                        <TouchableOpacity style={styles.btn} onPress={() => setNurseAdd(true)}>
-                                            <Text>Add notes</Text></TouchableOpacity>
-                                    ) : (
-                                        <View>
-                                            <TextInput placeholder="Notes by nurse" style={{ width: "98%", height: 42, backgroundColor: "#2827D3", borderRadius: 5, placeholderTextColor: "white", paddingLeft: 10, color: "white", margin: 10, alignSelf: "center" }}>
-                                            </TextInput>
-                                            <TouchableOpacity style={styles.btn}>
-                                                <Text>Save</Text>
-                                            </TouchableOpacity>
+                                        <View key={i} style={{ width: 300, alignSelf: "center", backgroundColor: "#5060F0", marginTop: 10, padding: 5, borderRadius: 8 }}>
+                                            <Text style={{ color: "white" }}>Date: {record.date}</Text>
+                                            <Text style={{ color: "white" }}>Patient: {record.fullName}</Text>
+                                            <Text style={{ color: "white" }}>Notes: {record.notes}</Text>
+                                            {nurseAdd === false ? (
+                                                <TouchableOpacity style={styles.btn} onPress={() => setNurseAdd(true)}>
+                                                    <Text>Add notes</Text></TouchableOpacity>
+                                            ) : (
+                                                <View>
+                                                    <TextInput placeholder="Notes by nurse" style={{ width: "98%", height: 42, backgroundColor: "#2827D3", borderRadius: 5, placeholderTextColor: "white", paddingLeft: 10, color: "white", margin: 10, alignSelf: "center" }}>
+                                                    </TextInput>
+                                                    <TouchableOpacity style={styles.btn}>
+                                                        <Text>Save</Text>
+                                                    </TouchableOpacity>
+                                                </View>
+                                            )}
+        
                                         </View>
-                                    )}
-
-                                </View>
-                            ) : (
-                                <Text style={{ color: "white" }}></Text>
-                            )
-                        ))
+                                    ) : (
+                                        <Text style={{ color: "white" }}></Text>
+                                    )
+                                )
+                             }
+                            
+                            })
 
                         }
                     </ScrollView>
@@ -127,6 +132,7 @@ const NursePatientFile = ({ route }) => {
                         value={agree}
                         onValueChange={() => setAgree(!agree)}
                         color={agree ? "#4630EB" : "black"}
+                        style={{marginLeft:15, marginBottom:15}}
                     />
                     <Text style={{ color: "white", marginLeft: 10 }}>Seen by nurse</Text>
                 </View>
@@ -145,22 +151,24 @@ const NursePatientFile = ({ route }) => {
                     <View style={{ width: 339, height: 1, backgroundColor: "#FFFFFF" }} ></View>
                     <ScrollView style={{ marginTop: 10 }}>
                         {data.map((record, index) => {
+                           if(record.fullName==patient.fullName)
+                           {
                             return (
-
                                 <View key={index} style={{ width: 300, alignSelf: "center", backgroundColor: "#2827D3", marginTop: 10, padding: 5, borderRadius: 8 }}>
                                     <Text style={{ color: "white" }}>Date: {record.date}</Text>
                                     <Text style={{ color: "white" }}>Patient: {record.fullName}</Text>
                                     <Text style={{ color: "white" }}>Notes: {record.notes}</Text>
-
                                 </View>
                             )
+                           }
+                          
                         })}
                     </ScrollView>
 
                 </View>
             </View>
 
-            <TouchableOpacity style={{ width: 246, height: 41, backgroundColor: "#5060F0", borderRadius: 5, justifyContent: "center", marginBottom: 20 }} onPress={() => navigation.navigate("nurseLogin")}>
+            <TouchableOpacity style={{ width: 246, height: 41, backgroundColor: "#5060F0", borderRadius: 5, justifyContent: "center", marginBottom: 20 }} onPress={() => navigation.navigate("loginAs")}>
                 <Text style={{ alignSelf: "center", color: "white" }}>Close</Text>
             </TouchableOpacity>
         </SafeAreaView>
@@ -197,10 +205,10 @@ const styles = StyleSheet.create({
     },
     todayRecords: {
 
-        marginBottom: 20,
+        marginBottom: 10,
         padding: 20,
         alignSelf: "stretch",
-        height: 300,
+        height: 180,
         marginTop: 20,
         // backgroundColor:"#5060F0",
         borderRadius: 15,
