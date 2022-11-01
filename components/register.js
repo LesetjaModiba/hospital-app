@@ -67,8 +67,8 @@ const Register = ({ navigation }) => {
     };
       addDoc(UsersCollectionRef, userDetails)
                }).then(()=>{ 
-               Alert.alert("Successfully Registered")}),navigation.navigate("nurseLogin").catch((error)=> {
-            console.log(error);
+               Alert.alert("Successfully Registered")}),navigation.navigate("loginAs").catch((error)=> {
+            console.log(error),Alert.alert("Registration unsuccessful");
         })
 
     }

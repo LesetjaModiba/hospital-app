@@ -96,7 +96,7 @@ const NursePatientFile = ({ navigation,route }) => {
                                                 <View>
                                                   <TextInput placeholder="Notes by nurse"  
                                                     onChangeText={(text)=>setNurseNotes(text)}
-                                                    style={{ width: "98%", height: 42, backgroundColor: "#2827D3", borderRadius: 5, placeholderTextColor: "white", paddingLeft: 10, color: "white", margin: 10, alignSelf: "center" }}>
+                                                    style={{ width: "98%", height: 42, backgroundColor: "#2827D3", borderRadius: 5, paddingLeft: 10, color: "white", margin: 10, alignSelf: "center" }}>
                                                     </TextInput>
                                                     <TouchableOpacity style={styles.btn}>
                                                         <Text>Save</Text>
@@ -155,7 +155,7 @@ const NursePatientFile = ({ navigation,route }) => {
                 </View>
             </View>
 
-            <TouchableOpacity style={{ width: 246, height: 41, backgroundColor: "#5060F0", borderRadius: 5, justifyContent: "center", marginBottom: 20 }} onPress={() => navigation.navigate("loginAs")}>
+            <TouchableOpacity style={{ width: 246, height: 41, backgroundColor: "#5060F0", borderRadius: 5, justifyContent: "center", marginBottom: 20 }} onPress={() => navigation.navigate("nurseHome")}>
                 <Text style={{ alignSelf: "center", color: "white" }}>Close</Text>
             </TouchableOpacity>
         </SafeAreaView>

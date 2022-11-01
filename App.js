@@ -14,6 +14,7 @@ import NurseLogin from "./components/nurse/nurseLogin";
 import Register from "./components/register";
 import DcLogin from "./components/doctor/dcLogin";
 import DcHome from "./components/doctor/dcHome";
+import docPaitentFilee from "./components/doctor/docPatientFile";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -30,7 +31,9 @@ const App = () => {
         <Stack.Screen name="nurseHome" component={NurseHome} />
         <Stack.Screen name="nurseLogin" component={NurseLogin}/>
         <Stack.Screen name="dcLogin" component={DcLogin} />
-      <Stack.Screen name="dcHome" component={DcHome} />
+        <Stack.Screen name="dcHome" component={DcHome} />
+        <Stack.Screen name="docPatientFile" component={docPaitentFilee} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -14,7 +14,8 @@ import {
     Button,
     TextInput,
     TouchableOpacity,
-    Image
+    Image,
+    Alert
   } from "react-native";
   import logo from '../images/real.png'
   import { signInWithEmailAndPassword } from "firebase/auth";
@@ -28,14 +29,14 @@ import { auth } from "../config/firebase";
       signInWithEmailAndPassword(auth,id,pass).then(()=>{
         if (id !== "" && pass !== ""){
           navigation.navigate("nurseHome");
-          Alert.alert("Successfully Logged In")
+          Alert.alert("Login Successful")
         }else{
-          Alert.alert("Inputs can not be empty")
+          Alert.alert("Inputs can not be empty"),
           console.log("Inputs can not be empty");
         }
   
       }).catch((error)=>{
-        console.log(error);
+        console.log(error),Alert.alert("No existing account for", id);
       })
     
     }
@@ -52,13 +53,13 @@ import { auth } from "../config/firebase";
           <Image source={logo} style={{width:250,height:200,marginTop:'30%'}}/>
         </View>
         <View style={styles.empNo}>
-          {/* <FontAwesomeIcon icon={faUser} size={25} style={{ color: "#ECECEC" }} /> */}
+          <FontAwesomeIcon icon={faUser} size={25} style={{ color: "#ECECEC" }} />
           <TextInput
             onChangeText={(text)=>setId(text)}
             style={{
               color: "#ECECEC",
               width: "90%",
-              paddingLeft: 70,
+              paddingLeft: 50,
               height: 40,
             }}
             placeholder="ID No or Employee No"
@@ -66,14 +67,14 @@ import { auth } from "../config/firebase";
           />
         </View>
         <View style={styles.password}>
-          {/* <FontAwesomeIcon icon={faLock} size={25} style={{ color: "#ECECEC" }} /> */}
+          <FontAwesomeIcon icon={faLock} size={25} style={{ color: "#ECECEC" }} />
           <TextInput
             onChangeText={(text)=>setPass(text)}
             style={{
               color: "#ECECEC",
               width: "90%",
               paddingLeft: 110,
-              height: 40,
+              height: 50,
             }}
             placeholder="Password"
             placeholderTextColor="#ECECEC"

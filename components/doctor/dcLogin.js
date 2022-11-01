@@ -35,9 +35,7 @@ import { auth } from "../config/firebase";
         }
   
       }).catch((error)=>{
-        console.log(error);
-      })
-    
+        console.log(error),Alert.alert("No existing account for", id);})
     }
     return (
       <SafeAreaView style={styles.container}>
@@ -52,13 +50,13 @@ import { auth } from "../config/firebase";
           <Image source={logo} style={{width:250,height:200,marginTop:'30%'}}/>
         </View>
         <View style={styles.empNo}>
-          {/* <FontAwesomeIcon icon={faUser} size={25} style={{ color: "#ECECEC" }} /> */}
+          <FontAwesomeIcon icon={faUser} size={25} style={{ color: "#ECECEC" }} />
           <TextInput
             onChangeText={(text)=>setId(text)}
             style={{
               color: "#ECECEC",
               width: "90%",
-              paddingLeft: 70,
+              paddingLeft: 50,
               height: 40,
             }}
             placeholder="ID No or Employee No"
@@ -66,13 +64,13 @@ import { auth } from "../config/firebase";
           />
         </View>
         <View style={styles.password}>
-          {/* <FontAwesomeIcon icon={faLock} size={25} style={{ color: "#ECECEC" }} /> */}
+          <FontAwesomeIcon icon={faLock} size={25} style={{ color: "#ECECEC" }} />
           <TextInput
             onChangeText={(text)=>setPass(text)}
             style={{
               color: "#ECECEC",
               width: "90%",
-              paddingLeft: 110,
+              paddingLeft: 50,
               height: 40,
             }}
             placeholder="Password"
